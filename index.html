@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Annrose Akande Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Navbar  -->
+    <header>
+      <nav class="navbar">
+        <div class="logo">A A</div>
+
+        <!-- hamburger feature  -->
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skill">Skills</a></li>
+          <li><a href="#project">Projects</a></li>
+          <li><a href="#contact">Contacts</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Homepage  -->
+    <section class="hero reveal" id="home">
+      <div class="hero-content reveal">
+        <div class="image reveal">
+          <img
+            src="images/profile picture.jpeg"
+            alt="Annrose Profile Picture"
+          />
+        </div>
+        <div class="intro reveal">
+          <h1>Hello, I'm <span class="typing"></span></h1>
+          <p class="subtitle-type reveal">Aspiring Full-Stack Developer</p>
+          <a href="#project" class="btn-link reveal">View My Work</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About me section  -->
+    <section class="about-me reveal" id="about">
+      <h1>About Me</h1>
+      <div class="about-content">
+        <p>
+          Hi, I'm Annrose Akande - a passionate and curious tech enthusiast
+          currently exploring software development, web development, and data
+          science. I enjoy building projects that help me grow my skills, and
+          I'm committed to improving myself every day.
+        </p>
+
+        <p>
+          I’m a Computer Programming student with a growing focus on front-end
+          development. I’ve built several web projects, including a To-Do List
+          app, Weather App, skincare brand landing page, and an e-commerce
+          product page. I work with HTML, CSS, JavaScript, React, Java, Python,
+          and MySQL, and I’m continuously developing my skills in building
+          responsive and interactive web experiences.
+        </p>
+
+        <p>
+          My goal is to become a full-stack developer and eventually build
+          innovative solutions that impact the world.
+        </p>
+      </div>
+      <div class="resume-container">
+        <a href="Annrose Akande Resume COOP pdf.pdf" download class="resume-btn"
+          ><i class="fa-regular fa-file-arrow-down"></i>
+          Download My Resume
+        </a>
+      </div>
+    </section>
+
+    <!-- Skills section  -->
+    <section class="skills reveal" id="skill">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-container">
+        <div class="skill">
+          <p><i class="fa-solid fa-code"></i> HTML & CSS</p>
+          <div class="progress-bar"><span style="width: 90%">90%</span></div>
+        </div>
+        <div class="skill">
+          <p><i class="fa-brands fa-js"></i> JavaScript</p>
+          <div class="progress-bar"><span style="width: 75%">75%</span></div>
+        </div>
+        <div class="skill">
+          <p><i class="fa-brands fa-java"></i> Java</p>
+          <div class="progress-bar"><span style="width: 60%">60%</span></div>
+        </div>
+        <div class="skill">
+          <p><i class="fa-brands fa-python"></i> Python</p>
+          <div class="progress-bar"><span style="width: 50%">50%</span></div>
+        </div>
+        <div class="skill">
+          <p><i class="fa-solid fa-database"></i> MySQL</p>
+          <div class="progress-bar"><span style="width: 65%">65%</span></div>
+        </div>
+        <div class="skill">
+          <p><i class="fa-brands fa-linux"></i> Linux/Bash Commands</p>
+          <div class="progress-bar"><span style="width: 70%">70%</span></div>
+        </div>
+        <div class="skill">
+          <p><i class="fa-brands fa-github"></i> Git & GitHub</p>
+          <div class="progress-bar"><span style="width: 75%">75%</span></div>
+        </div>
+        <div class="skill">
+          <p><i class="fa-regular fa-file-code"></i> VS Code</p>
+          <div class="progress-bar"><span style="width: 90%">90%</span></div>
+        </div>
+        <div class="skill">
+          <p><i class="fa-solid fa-server"></i> SQL Server Studio</p>
+          <div class="progress-bar"><span style="width: 75%">75%</span></div>
+        </div>
+        <div class="skill">
+          <p><i class="fa-solid fa-question"></i> Problem Solving</p>
+          <div class="progress-bar"><span style="width: 80%">80%</span></div>
+        </div>
+        <div class="skill">
+          <p><i class="fa-solid fa-people-group"></i> Teamwork</p>
+          <div class="progress-bar"><span style="width: 85%">85%</span></div>
+        </div>
+        <div class="skill">
+          <p><i class="fa-solid fa-comments"></i> Communication</p>
+          <div class="progress-bar"><span style="width: 95%">95%</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- projects section  -->
+    <section id="project" class="project-sections reveal">
+      <h2>Projects</h2>
+      <div class="carousel-container">
+        <div class="carousel">
+          <!-- slide 1 -->
+          <div class="slide active">
+            <img src="images/todo_list.png" alt="To-Do List Application" />
+            <h2>To-do List Website</h2>
+            <p>
+              This To-Do List web application allows users to add, edit, delete,
+              and organize tasks efficiently. It was built with a strong focus
+              on simplicity, usability, and clean UI design to ensure a smooth
+              and intuitive user experience. The application supports dynamic
+              task management through effective DOM manipulation and event
+              handling. During this project, I strengthened my understanding of
+              JavaScript fundamentals, including handling user interactions,
+              managing application state, and working with local storage to
+              persist tasks even after the page is refreshed. The project also
+              incorporates smooth animations and responsive design principles,
+              making it accessible and visually appealing across different
+              screen sizes. Overall, this project reflects my ability to build
+              functional, user-friendly web applications while paying attention
+              to performance, usability, and modern front-end development best
+              practices.
+            </p>
+            <div class="tech-stack">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
+            <div class="project-buttons">
+              <a
+                href="https://annie-todolist-web.netlify.app/"
+                class="btn"
+                target="_blank"
+                >View Project</a
+              >
+              <a
+                href="https://github.com/Annrose-debug/todo-app"
+                class="btn-secondary"
+                target="_blank"
+                >GitHub</a
+              >
+            </div>
+          </div>
+
+          <!-- slide 2 -->
+          <div class="slide">
+            <img src="images/weatherNow.png" alt="" />
+            <h2>WeatherNow Web Application</h2>
+            <p>
+              WeatherNow is a responsive web application that provides users
+              with real-time weather information for any city. The app allows
+              users to search for locations and instantly view key weather
+              details such as temperature, weather conditions, humidity, and
+              wind speed. It was designed with a clean and user-friendly
+              interface to make checking the weather quick and intuitive. This
+              project helped me gain hands-on experience working with APIs,
+              including fetching and handling external data asynchronously using
+              JavaScript. I improved my understanding of API integration, error
+              handling, and dynamic content rendering based on user input. The
+              application also focuses on responsive design, ensuring a smooth
+              experience across both desktop and mobile devices. Overall,
+              Weather Now demonstrates my ability to build practical, real-world
+              web applications that interact with external services while
+              maintaining a clear, modern UI and good performance.
+            </p>
+            <div class="tech-stack">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
+            <div class="project-buttons">
+              <a href="https://annie-weather-app.netlify.app/" class="btn"
+                >View Project</a
+              >
+              <a
+                href="https://github.com/Annrose-debug/weather-app"
+                class="btn-secondary"
+                >GitHub</a
+              >
+            </div>
+          </div>
+
+          <!-- slide 3 -->
+          <div class="slide">
+            <img
+              src="images/Screenshot 2025-12-09 104955.png"
+              alt="Personal Portfolio"
+            />
+            <h2>Personal Portfolio</h2>
+            <p>
+              This personal portfolio website was designed and developed to
+              showcase my skills, projects, and growth as a frontend developer.
+              It serves as a central platform where visitors can explore my
+              work, learn more about my background, and view the projects I have
+              built using modern web technologies. The layout is clean, visually
+              appealing, and easy to navigate, with a strong focus on clarity
+              and user experience. Building this portfolio helped me strengthen
+              my understanding of responsive web design, layout structuring, and
+              component-based thinking. I focused on creating a smooth and
+              engaging interface with subtle animations and interactive elements
+              to enhance usability without overwhelming the user. The site is
+              fully responsive, ensuring consistent performance across different
+              screen sizes and devices. Overall, this project reflects my
+              attention to detail, creativity, and commitment to continuous
+              improvement. It also represents my personal brand as a developer
+              and provides a solid foundation that I can continue to expand as I
+              build more projects and gain more experience.
+            </p>
+            <div class="tech-stack">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
+            <div class="project-buttons">
+              <a href="" class="btn" target="_blank">View Project</a>
+              <a href="" class="btn-secondary" target="_blank">GitHub</a>
+            </div>
+          </div>
+
+          <!-- slide 4 -->
+          <div class="slide">
+            <img src="images/skincare_landing_page.png" alt="Project 4" />
+            <h2>GlowUp - Responsive Skincare Brand Landing Page</h2>
+            <p>
+              GlowUp is a responsive landing page created for a modern skincare
+              brand, designed with a clean, elegant aesthetic and a strong focus
+              on visual appeal and user experience. The page showcases skincare
+              products, brand values, and key benefits in a clear and engaging
+              way, guiding users naturally through the content with
+              well-structured sections and strong call-to-action elements. This
+              project allowed me to apply and strengthen my skills in responsive
+              web design, layout structuring, and modern CSS styling. The
+              interface adapts smoothly across different screen sizes, ensuring
+              an optimal experience on mobile, tablet, and desktop devices.
+              Subtle animations and smooth transitions were added to enhance
+              interactivity while maintaining a calm, premium feel that aligns
+              with the skincare theme. Building GlowUp helped me better
+              understand how frontend development supports digital marketing and
+              branding. It demonstrates my ability to transform a brand idea
+              into a functional, visually appealing web experience while
+              prioritizing usability, performance, and clean design.
+            </p>
+            <div class="tech-stack">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
+            <div class="project-buttons">
+              <a href="https://annie-glow-up.netlify.app/" class="btn"
+                >View Project</a
+              >
+              <a
+                href="https://github.com/Annrose-debug/skincare_landing_page"
+                class="btn-secondary"
+                >GitHub</a
+              >
+            </div>
+          </div>
+
+          <!-- slide 5 -->
+          <div class="slide">
+            <img src="images/expense_tracker.png" alt="Project 5" />
+            <h2>Expense Tracker Web Application</h2>
+            <p>
+              The Expense Tracker is a responsive web application designed to
+              help users track and manage their daily expenses in a simple and
+              organized way. Users can add, view, and delete expenses while
+              seeing a clear breakdown of their spending. The interface focuses
+              on clarity and ease of use, allowing users to quickly understand
+              their financial activity at a glance. This project helped me
+              strengthen my understanding of JavaScript logic, state management,
+              and DOM manipulation. I worked with user input handling, dynamic
+              rendering of expense lists, and calculations such as total
+              expenses. Local storage was implemented to persist data, ensuring
+              that expenses remain saved even after the page is refreshed.
+              Through this project, I gained practical experience building a
+              real-world application that combines functionality with clean UI
+              design. The Expense Tracker demonstrates my ability to create
+              interactive, user-focused web applications while applying best
+              practices in responsiveness, usability, and code organization.
+            </p>
+            <div class="tech-stack">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
+            <div class="project-buttons">
+              <a
+                href="https://annrose-akande-expense-tracker.netlify.app/"
+                class="btn"
+                >View Project</a
+              >
+              <a
+                href="https://github.com/Annrose-debug/expense-tracker"
+                class="btn-secondary"
+                >GitHub</a
+              >
+            </div>
+          </div>
+
+          <!-- slide 6 -->
+          <div class="slide">
+            <img src="images/ecommerce_page.png" alt="Project 6" />
+            <h2>Vitamin C Serum – E-commerce Landing Page</h2>
+            <p>
+              A modern and responsive e-commerce product landing page designed
+              to showcase a Vitamin C serum. The page highlights product
+              details, pricing, reviews, and key benefits while providing an
+              intuitive user experience. Built with a strong focus on clean UI,
+              responsiveness, and conversion-focused design, including quantity
+              selection and dynamic price updates. This project demonstrates my
+              ability to create visually appealing product pages, structure
+              reusable components, and implement interactive features commonly
+              found in real e-commerce websites.
+            </p>
+            <div class="tech-stack">
+              <span>React</span>
+              <span>JavaScript</span>
+              <span>CSS3</span>
+              <span>Vite</span>
+              <span>HTML5</span>
+            </div>
+            <div class="project-buttons">
+              <a
+                href="https://ecommerce-product-page-annrose-akande.netlify.app/"
+                class="btn"
+                >View Project</a
+              >
+              <a
+                href="https://github.com/Annrose-debug/ecommerce-product-page"
+                class="btn-secondary"
+                >GitHub</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Carousel Navigation -->
+        <button class="carousel-arrow left-arrow">&#8592;</button>
+        <button class="carousel-arrow right-arrow">&#8594;</button>
+
+        <!-- Carousel Dots -->
+        <div class="carousel-dots">
+          <!-- Dots will be added by JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- contacts section  -->
+    <section class="contact-section reveal" id="contact">
+      <h2>Contact Me</h2>
+      <p class="contact-info">
+        Feel free to reach out to me for collaborations, opportunities, or
+        questions.
+      </p>
+
+      <div class="contact-container">
+        <div class="contact-item">
+          <h3><i class="fa-solid fa-envelope"></i> Email</h3>
+          <p>
+            <a href="mailto:annroseakande@gmail.com">annroseakande@gmail.com</a>
+          </p>
+        </div>
+        <div class="contact-item">
+          <h3><i class="fa-solid fa-phone"></i> Phone</h3>
+          <p><a href="tel:+16132969929">+1 (613) 296-9929</a></p>
+        </div>
+        <div class="contact-item">
+          <h3><i class="fa-brands fa-github"></i> GitHub</h3>
+          <p>
+            <a href="https://github.com/Annrose-debug" target="_blank"
+              >GitHub</a
+            >
+          </p>
+        </div>
+        <div class="contact-item">
+          <h3><i class="fa-brands fa-linkedin"></i> LinkedIn</h3>
+          <p>
+            <a
+              href="https://www.linkedin.com/in/annrose-akande-a2a279349"
+              target="_blank"
+              >LinkedIn</a
+            >
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- footer section  -->
+    <footer>
+      <p>
+        &copy; <span id="currentYear"></span> Annrose Akande. All rights
+        reserved.
+      </p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
