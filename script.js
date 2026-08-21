@@ -1,236 +1,177 @@
 /* ============================================================
-   SMOOTH SCROLL — nav links
-   ============================================================ */
-document.querySelectorAll(".nav-links a").forEach((link) => {
-  link.addEventListener("click", function (e) {
-    const href = this.getAttribute("href");
-    // Only intercept internal anchor links
-    if (href && href.startsWith("#")) {
-      e.preventDefault();
-      const target = document.querySelector(href);
-      if (target) target.scrollIntoView({ behavior: "smooth" });
+   PROJECT MEDIA GALLERIES — multiple images + optional video
+   Broken files (onerror) remove their own slide automatically.
+   Give it a moment for those removals before wiring up controls.
+============================================================ */
+function initGalleries() {
+  document.querySelectorAll('.project-media').forEach(media => {
+    const track = media.querySelector('.media-track');
+    const empty = media.querySelector('.media-empty');
+    if (!track) return;
+    const slides = Array.from(track.children);
+
+    if (slides.length === 0) {
+      track.style.display = 'none';
+      if (empty) empty.style.display = 'flex';
+      return;
     }
-  });
-});
 
-/* ============================================================
-   REVEAL ON SCROLL
-   ============================================================ */
-const revealElements = document.querySelectorAll(".reveal");
+    let idx = 0;
+    const prevBtn = media.querySelector('.media-prev');
+    const nextBtn = media.querySelector('.media-next');
+    const dotsWrap = media.querySelector('.media-dots');
+    let timer = null;
 
-function revealOnScroll() {
-  const windowHeight = window.innerHeight;
-  revealElements.forEach((el) => {
-    const elementTop = el.getBoundingClientRect().top;
-    if (elementTop < windowHeight - 100) {
-      el.classList.add("active");
-    } else {
-      el.classList.remove("active");
-    }
-  });
-}
-
-window.addEventListener("scroll", revealOnScroll, { passive: true });
-// Run once immediately (covers elements already in viewport)
-revealOnScroll();
-
-/* ============================================================
-   HERO TYPING EFFECT
-   (Fixed: runs on DOMContentLoaded; cursor handled by CSS span)
-   ============================================================ */
-document.addEventListener("DOMContentLoaded", () => {
-  const typingEl = document.querySelector(".typing");
-  if (!typingEl) return;
-
-  const nameText = "Annrose Akande";
-  let index = 0;
-  let isDeleting = false;
-  let speed = 150;
-
-  function type() {
-    if (!isDeleting) {
-      typingEl.textContent = nameText.substring(0, index + 1);
-      index++;
-      if (index === nameText.length) {
-        isDeleting = true;
-        speed = 2000; // pause before deleting
-      } else {
-        speed = 130;
-      }
-    } else {
-      typingEl.textContent = nameText.substring(0, index - 1);
-      index--;
-      if (index === 0) {
-        isDeleting = false;
-        speed = 600;
-      } else {
-        speed = 80;
+    function update() {
+      track.style.transform = `translateX(-${idx * 100}%)`;
+      if (dotsWrap) {
+        dotsWrap.querySelectorAll('.media-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
       }
     }
-    setTimeout(type, speed);
-  }
+    function goTo(i) {
+      idx = (i + slides.length) % slides.length;
+      update();
+    }
+    function startAutoplay() {
+      if (slides.length > 1) timer = setInterval(() => goTo(idx + 1), 4500);
+    }
+    function stopAutoplay() {
+      if (timer) clearInterval(timer);
+    }
 
-  type();
-});
-
-/* ============================================================
-   SKILLS PROGRESS BAR ANIMATION
-   (Fixed: guard against null skillsSection)
-   ============================================================ */
-const skillsSection = document.querySelector(".skills");
-let skillsAnimated = false;
-
-function animateSkills() {
-  if (skillsAnimated || !skillsSection) return;
-
-  const sectionTop = skillsSection.getBoundingClientRect().top;
-  if (sectionTop < window.innerHeight - 80) {
-    const skillSpans = document.querySelectorAll(".progress-bar span");
-    skillSpans.forEach((span) => {
-      const targetWidth = span.style.width;
-      span.style.width = "0";
-      requestAnimationFrame(() => {
-        requestAnimationFrame(() => {
-          span.style.width = targetWidth;
-        });
+    if (slides.length > 1) {
+      slides.forEach((_, i) => {
+        const dot = document.createElement('span');
+        dot.className = 'media-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', () => { goTo(i); stopAutoplay(); startAutoplay(); });
+        dotsWrap && dotsWrap.appendChild(dot);
       });
-    });
-    skillsAnimated = true;
-  }
-}
+      if (prevBtn) prevBtn.style.display = 'flex';
+      if (nextBtn) nextBtn.style.display = 'flex';
+    } else {
+      if (prevBtn) prevBtn.style.display = 'none';
+      if (nextBtn) nextBtn.style.display = 'none';
+    }
 
-window.addEventListener("scroll", animateSkills, { passive: true });
+    if (prevBtn) prevBtn.addEventListener('click', () => { goTo(idx - 1); stopAutoplay(); startAutoplay(); });
+    if (nextBtn) nextBtn.addEventListener('click', () => { goTo(idx + 1); stopAutoplay(); startAutoplay(); });
+
+    media.addEventListener('mouseenter', stopAutoplay);
+    media.addEventListener('mouseleave', startAutoplay);
+
+    startAutoplay();
+  });
+}
+// give onerror-based slide removals a moment to fire first
+setTimeout(initGalleries, 400);
 
 /* ============================================================
-   PROJECTS CAROUSEL
-   (Fixed: only runs after DOM is ready; correct slide toggle)
-   ============================================================ */
-document.addEventListener("DOMContentLoaded", () => {
-  const slides       = document.querySelectorAll(".slide");
-  const leftArrow    = document.querySelector(".left-arrow");
-  const rightArrow   = document.querySelector(".right-arrow");
-  const dotsContainer = document.querySelector(".carousel-dots");
+   HERO TYPING EFFECT — rotates through a few roles
+============================================================ */
+const roles = ["Full-Stack Developer", "Problem Solver", "Coffee-Fueled Coder"];
+const typeEl = document.getElementById('typeLine');
 
-  if (!slides.length || !leftArrow || !rightArrow || !dotsContainer) return;
+if (typeEl) {
+  let roleIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
 
-  let currentSlide = 0;
-  let slideInterval;
+  function typeRole() {
+    const current = roles[roleIndex];
+    let speed = 90;
 
-  // Build dots
-  slides.forEach((_, i) => {
-    const dot = document.createElement("div");
-    dot.classList.add("carousel-dot");
-    if (i === 0) dot.classList.add("active");
-    dot.addEventListener("click", () => goToSlide(i));
-    dotsContainer.appendChild(dot);
+    if (!isDeleting) {
+      typeEl.textContent = current.substring(0, charIndex + 1);
+      charIndex++;
+      if (charIndex === current.length) {
+        isDeleting = true;
+        speed = 1600;
+      }
+    } else {
+      typeEl.textContent = current.substring(0, charIndex - 1);
+      charIndex--;
+      speed = 45;
+      if (charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        speed = 400;
+      }
+    }
+    setTimeout(typeRole, speed);
+  }
+
+  typeRole();
+}
+
+/* ============================================================
+   SCROLL REVEAL
+============================================================ */
+const revealEls = document.querySelectorAll('.reveal');
+function onScroll() {
+  const h = window.innerHeight;
+  revealEls.forEach(el => {
+    if (el.getBoundingClientRect().top < h - 100) el.classList.add('active');
   });
+}
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
 
-  const dots = dotsContainer.querySelectorAll(".carousel-dot");
+/* ============================================================
+   PROJECT DOMAIN FILTER TABS
+============================================================ */
+const tabs = document.querySelectorAll('#domainTabs .tab-btn');
+const cards = document.querySelectorAll('#projectGrid .project-card[data-domain]');
 
-  function updateSlide() {
-    slides.forEach((slide, i) => {
-      slide.classList.toggle("active", i === currentSlide);
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.dataset.active = 'false');
+    tab.dataset.active = 'true';
+    const domain = tab.dataset.domain;
+    cards.forEach(card => {
+      const match = domain === 'all' || card.dataset.domain === domain;
+      card.dataset.visible = match ? 'true' : 'false';
     });
-    dots.forEach((dot, i) => {
-      dot.classList.toggle("active", i === currentSlide);
-    });
-  }
-
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % slides.length;
-    updateSlide();
-  }
-
-  function prevSlide() {
-    currentSlide = (currentSlide - 1 + slides.length) % slides.length;
-    updateSlide();
-  }
-
-  function goToSlide(index) {
-    currentSlide = index;
-    updateSlide();
-    resetInterval();
-  }
-
-  function resetInterval() {
-    clearInterval(slideInterval);
-    slideInterval = setInterval(nextSlide, 5500);
-  }
-
-  leftArrow.addEventListener("click", () => { prevSlide(); resetInterval(); });
-  rightArrow.addEventListener("click", () => { nextSlide(); resetInterval(); });
-
-  // Pause on hover
-  const carousel = document.querySelector(".carousel");
-  if (carousel) {
-    carousel.addEventListener("mouseenter", () => clearInterval(slideInterval));
-    carousel.addEventListener("mouseleave", resetInterval);
-  }
-
-  // Keyboard support for accessibility
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "ArrowLeft")  { prevSlide(); resetInterval(); }
-    if (e.key === "ArrowRight") { nextSlide(); resetInterval(); }
   });
-
-  resetInterval();
-  updateSlide();
 });
 
 /* ============================================================
-   HAMBURGER MENU
-   ============================================================ */
-const hamburger = document.querySelector(".hamburger");
-const navLinks  = document.querySelector(".nav-links");
+   SKILLS TOOLKIT — pill renderer
+============================================================ */
+const skillGroups = {
+  skillsDev: ['JavaScript', 'React.js', 'Next.js', 'Node.js', 'Java', 'HTML', 'CSS', 'REST APIs', 'JWT Auth', 'Python', 'GitHub'],
+  skillsSupport: ['System Troubleshooting', 'Remote Troubleshooting', 'Help Desk', 'Documentation', 'Customer Service', 'Jira', 'Zendesk'],
+  skillsData: ['MySQL', 'SQL', 'Data Analysis', 'Microsoft Excel', 'Data Processing'],
+  skillsPM: ['Agile', 'Project Tracking', 'Risk Management', 'Requirements Gathering', 'Project Scheduling', 'SDLC'],
+  skillsSoft: ['Communication', 'Team Collaboration', 'Problem Solving', 'Analytical Thinking', 'Research Skills', 'Presentation'],
+};
 
-if (hamburger && navLinks) {
-  hamburger.addEventListener("click", () => {
-    const isOpen = navLinks.classList.toggle("active");
-    hamburger.classList.toggle("active", isOpen);
-    document.body.style.overflow = isOpen ? "hidden" : "";
+Object.entries(skillGroups).forEach(([containerId, skills]) => {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  skills.forEach(skill => {
+    const pill = document.createElement('span');
+    pill.className = 'tag-pill text-xs px-3 py-1.5 rounded-full';
+    pill.textContent = skill;
+    container.appendChild(pill);
   });
+});
 
-  // Close on link click
-  document.querySelectorAll(".nav-links a").forEach((link) => {
-    link.addEventListener("click", closeMenu);
+/* ============================================================
+   MOBILE NAV
+============================================================ */
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+if (hamburger && mobileMenu) {
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
   });
-
-  // Close on outside click
-  document.addEventListener("click", (e) => {
-    if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
-      closeMenu();
-    }
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
   });
-
-  // Keyboard: close on Escape
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeMenu();
-  });
-}
-
-function closeMenu() {
-  if (hamburger && navLinks) {
-    hamburger.classList.remove("active");
-    navLinks.classList.remove("active");
-    document.body.style.overflow = "";
-  }
 }
 
 /* ============================================================
-   COPYRIGHT YEAR
-   ============================================================ */
-const yearEl = document.getElementById("currentYear");
+   FOOTER YEAR
+============================================================ */
+const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-/* ============================================================
-   NAVBAR: add scroll shadow
-   ============================================================ */
-const header = document.querySelector("header");
-window.addEventListener("scroll", () => {
-  if (!header) return;
-  if (window.scrollY > 10) {
-    header.style.boxShadow = "0 4px 30px rgba(0,0,0,0.4)";
-  } else {
-    header.style.boxShadow = "none";
-  }
-}, { passive: true });

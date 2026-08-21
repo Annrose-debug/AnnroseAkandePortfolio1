@@ -4,551 +4,1572 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Annrose Akande | Portfolio</title>
-    <link rel="stylesheet" href="style.css" />
-    <!-- Font Awesome 6 (fixed: was using v7 which doesn't exist publicly) -->
+    <meta
+      name="description"
+      content="Annrose Akande — Software Developer & Technical Support Specialist. Full-stack projects, certifications, and a bit of personality."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Caveat:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- Updated fonts: added DM Serif Display for headings + kept Poppins for body -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              bg: "#180D17",
+              bgsoft: "#211320",
+              card: "#261729",
+              border: "#3E2539",
+              ink: "#FDF3F8",
+              dim: "#CDA8C2",
+              pink: "#FF4FA0",
+              pinklight: "#FFC1E3",
+              pinkdeep: "#AD1A6B",
+            },
+            fontFamily: {
+              display: ['"Fredoka"', "sans-serif"],
+              body: ['"Poppins"', "sans-serif"],
+              hand: ['"Caveat"', "cursive"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <link rel="stylesheet" href="style.css" />
   </head>
-  <body>
-    <!-- Animated background particles -->
-    <div class="bg-grid"></div>
 
-    <!-- Navbar -->
-    <header>
-      <nav class="navbar">
-        <div class="logo">A<span class="logo-dot">·</span>A</div>
+  <body class="font-body bg-bg text-ink antialiased">
+    <div class="bg-blooms"></div>
 
-        <div
-          class="hamburger"
-          aria-label="Toggle navigation"
-          role="button"
-          tabindex="0"
+    <!-- ============================================================
+     NOTE ON IMAGES — where to add your pictures:
+     1) Hero photo   → replace the src on <img id="heroPhoto"> below
+        (images/annrose-profile.jpg). If missing, a cute placeholder shows instead.
+     2) Project photos → each <article class="project-card"> has an
+        <img class="project-thumb"> — set its src to your screenshot
+        (e.g. images/roomielink.jpg). If missing, a placeholder icon shows.
+     Just drop an "images" folder next to this file with your files in it.
+============================================================ -->
+
+    <!-- ============================================================
+     NAV
+============================================================ -->
+    <header class="fixed top-4 inset-x-0 z-50 px-4">
+      <nav
+        class="pill-nav max-w-4xl mx-auto rounded-full px-6 py-3 flex items-center justify-between"
+      >
+        <a href="#home" class="font-display font-semibold text-pink text-lg"
+          >Annrose <span class="text-pinklight">✿</span></a
         >
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
 
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skill">Skills</a></li>
-          <li><a href="#project">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+        <ul
+          class="hidden lg:flex items-center gap-6 font-display text-[13px] text-dim"
+        >
+          <li><a href="#home" class="nav-link hover:text-ink">Home</a></li>
+          <li><a href="#about" class="nav-link hover:text-ink">About</a></li>
+          <li><a href="#story" class="nav-link hover:text-ink">My Story</a></li>
+          <li><a href="#skills" class="nav-link hover:text-ink">Skills</a></li>
+          <li>
+            <a href="#certificates" class="nav-link hover:text-ink"
+              >Certificates</a
+            >
+          </li>
+          <li>
+            <a href="#education" class="nav-link hover:text-ink">Education</a>
+          </li>
+          <li>
+            <a href="#projects" class="nav-link hover:text-ink">Projects</a>
+          </li>
+          <li>
+            <a href="#contact" class="nav-link hover:text-ink">Contact</a>
+          </li>
         </ul>
+
+        <a
+          href="#contact"
+          class="btn-primary hidden sm:inline-flex text-white font-display text-[13px] font-medium px-5 py-2 rounded-full transition"
+        >
+          Hire Me
+        </a>
+
+        <button
+          id="hamburger"
+          aria-label="Toggle navigation"
+          class="lg:hidden text-ink text-lg"
+        >
+          <i class="fa-solid fa-bars"></i>
+        </button>
       </nav>
+
+      <div
+        id="mobileMenu"
+        class="lg:hidden hidden max-w-4xl mx-auto mt-2 pill-nav rounded-2xl px-6 py-4 flex flex-col gap-3 font-display text-sm text-dim"
+      >
+        <a href="#home" class="mobile-link hover:text-pink">Home</a>
+        <a href="#about" class="mobile-link hover:text-pink">About</a>
+        <a href="#story" class="mobile-link hover:text-pink">My Story</a>
+        <a href="#skills" class="mobile-link hover:text-pink">Skills</a>
+        <a href="#certificates" class="mobile-link hover:text-pink"
+          >Certificates</a
+        >
+        <a href="#education" class="mobile-link hover:text-pink">Education</a>
+        <a href="#projects" class="mobile-link hover:text-pink">Projects</a>
+        <a href="#contact" class="mobile-link hover:text-pink">Contact</a>
+      </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-      <div class="hero-content reveal">
-        <div class="image-wrapper">
-          <div class="image-ring"></div>
-          <div class="image">
+    <!-- ============================================================
+     HERO
+============================================================ -->
+    <section
+      id="home"
+      class="relative z-10 min-h-screen flex items-center pt-32 pb-16 px-6"
+    >
+      <div
+        class="max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center"
+      >
+        <div class="reveal">
+          <p class="font-display text-pinklight text-sm tracking-wide">
+            ANNROSE AKANDE
+          </p>
+          <h1
+            class="font-display text-4xl sm:text-5xl font-semibold mt-3 leading-tight"
+          >
+            ✿ Hi, I'm <span class="text-pink text-glow">Annrose</span> ✿
+          </h1>
+          <p class="font-hand text-pink text-2xl sm:text-3xl mt-2">
+            I'm a <span id="typeLine"></span
+            ><span class="cursor-blink">&nbsp;</span>
+          </p>
+          <p class="text-dim mt-5 leading-relaxed max-w-md">
+            Computer programming graduate and full-stack developer with a strong
+            base in technical support and data analysis. I like solving problems
+            from every angle — coding a feature, debugging a broken system, or
+            writing the SQL query that finally explains what's going on.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4 mt-8">
+            <a
+              href="Annrose_Akande_Resume.pdf"
+              download
+              class="btn-primary text-white font-display font-medium text-sm px-6 py-3 rounded-full flex items-center gap-2 transition"
+            >
+              <i class="fa-solid fa-download"></i> Download CV
+            </a>
+            <div class="flex items-center gap-3">
+              <a
+                href="https://github.com/Annrose-debug"
+                target="_blank"
+                rel="noopener"
+                class="w-10 h-10 rounded-full card card-hover flex items-center justify-center text-dim hover:text-pink"
+              >
+                <i class="fa-brands fa-github"></i>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/annrose-akande"
+                target="_blank"
+                rel="noopener"
+                class="w-10 h-10 rounded-full card card-hover flex items-center justify-center text-dim hover:text-pink"
+              >
+                <i class="fa-brands fa-linkedin-in"></i>
+              </a>
+              <a
+                href="mailto:annrose.akande@outlook.com"
+                class="w-10 h-10 rounded-full card card-hover flex items-center justify-center text-dim hover:text-pink"
+              >
+                <i class="fa-solid fa-envelope"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal flex justify-center">
+          <div class="photo-frame w-72 sm:w-80 aspect-[4/5]">
             <img
+              id="heroPhoto"
               src="images/AnnroseImage.png"
-              alt="Annrose Akande profile photo"
+              alt="Annrose Akande"
+              class="w-full h-full object-cover"
+              onerror="
+                this.onerror = null;
+                this.replaceWith(
+                  document
+                    .getElementById('heroFallback')
+                    .content.cloneNode(true).firstElementChild,
+                );
+              "
             />
           </div>
-        </div>
-
-        <div class="intro">
-          <p class="greeting">Hi there 👋</p>
-          <h1>I'm <span class="typing"></span><span class="cursor">|</span></h1>
-          <p class="subtitle-type">Frontend/Full-Stack Developer</p>
-          <div class="hero-btns">
-            <a href="#project" class="btn-primary">View My Work</a>
-            <a href="#contact" class="btn-ghost">Get In Touch</a>
-          </div>
-        </div>
-      </div>
-
-      <!-- Floating decoration blobs -->
-      <div class="blob blob-1"></div>
-      <div class="blob blob-2"></div>
-    </section>
-
-    <!-- About Me -->
-    <section class="about-me reveal" id="about">
-      <div class="section-header">
-        <span class="section-tag">Who I Am</span>
-        <h2 class="section-title">About Me</h2>
-      </div>
-      <div class="about-grid">
-        <div class="about-text">
-          <p>
-            Hi, I'm <strong>Annrose Akande</strong> — a passionate and curious
-            tech enthusiast who enjoys turning ideas into real, working
-            applications. I’m currently exploring software development, web
-            development, and data, and I’m always looking for ways to challenge
-            myself and grow.
-          </p>
-
-          <p>
-            I recently completed a Computer Programming program at Algonquin
-            College, where I built a strong foundation in developing responsive,
-            user-focused web applications. I’ve worked on projects ranging from
-            interactive web apps to landing pages and e-commerce interfaces. My
-            core stack includes HTML, CSS, JavaScript, TypeScript, and React,
-            along with experience in Java, Python, and MySQL.
-          </p>
-
-          <p>
-            Beyond coding, I enjoy solving problems and pushing through
-            challenges until things finally click. I have a growing interest in
-            cybersecurity and modern AI tools, and I’m always exploring how they
-            can be used to build smarter, more efficient solutions.
-          </p>
-
-          <p>
-            Outside of tech, I enjoy watching action and spy movies, exploring
-            new ideas, and finding inspiration for my next project. I’m
-            naturally curious and always thinking about how things work —
-            whether it’s in technology or everyday life.
-          </p>
-
-          <p>
-            My goal is to become a full-stack developer and eventually build
-            impactful, globally recognized tech solutions. Right now, I’m
-            focused on learning, building, and becoming the best developer I can
-            be — one project at a time.
-          </p>
-        </div>
-
-        <div class="about-highlights">
-          <div class="highlight-card">
-            <i class="fa-solid fa-laptop-code"></i>
-            <h3>6+</h3>
-            <p>Projects Built</p>
-          </div>
-          <div class="highlight-card">
-            <i class="fa-solid fa-code"></i>
-            <h3>5+</h3>
-            <p>Languages & Frameworks</p>
-          </div>
-          <div class="highlight-card">
-            <i class="fa-solid fa-certificate"></i>
-            <h3>CS</h3>
-            <p>Computer Programming Background</p>
-          </div>
-          <div class="highlight-card">
-            <i class="fa-solid fa-rocket"></i>
-            <h3>∞</h3>
-            <p>Always Learning</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="resume-container">
-        <!--
-          ========================================================
-          REPLACE RESUME: swap the href below with your new PDF filename.
-          Example: href="Annrose_Akande_Resume_2025.pdf"
-          Keep the `download` attribute so it downloads directly.
-          ========================================================
-        -->
-        <a
-          href="Annrose Akande Resume COOP pdf.pdf"
-          download
-          class="resume-btn"
-        >
-          <i class="fa-solid fa-file-arrow-down"></i>
-          Download My Resume
-        </a>
-      </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section class="skills reveal" id="skill">
-      <div class="section-header">
-        <span class="section-tag">What I Know</span>
-        <h2 class="section-title">Skills</h2>
-      </div>
-      <div class="skills-container">
-        <div class="skill">
-          <div class="skill-header">
-            <p><i class="fa-solid fa-code"></i> HTML & CSS</p>
-            <span class="skill-pct">90%</span>
-          </div>
-          <div class="progress-bar">
-            <span style="width: 90%" data-width="90%"></span>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-header">
-            <p><i class="fa-brands fa-js"></i> JavaScript</p>
-            <span class="skill-pct">75%</span>
-          </div>
-          <div class="progress-bar">
-            <span style="width: 75%" data-width="75%"></span>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-header">
-            <p><i class="fa-brands fa-java"></i> Java</p>
-            <span class="skill-pct">60%</span>
-          </div>
-          <div class="progress-bar">
-            <span style="width: 60%" data-width="60%"></span>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-header">
-            <p><i class="fa-brands fa-python"></i> Python</p>
-            <span class="skill-pct">50%</span>
-          </div>
-          <div class="progress-bar">
-            <span style="width: 50%" data-width="50%"></span>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-header">
-            <p><i class="fa-solid fa-database"></i> MySQL</p>
-            <span class="skill-pct">65%</span>
-          </div>
-          <div class="progress-bar">
-            <span style="width: 65%" data-width="65%"></span>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-header">
-            <p><i class="fa-brands fa-linux"></i> Linux / Bash</p>
-            <span class="skill-pct">70%</span>
-          </div>
-          <div class="progress-bar">
-            <span style="width: 70%" data-width="70%"></span>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-header">
-            <p><i class="fa-brands fa-github"></i> Git & GitHub</p>
-            <span class="skill-pct">75%</span>
-          </div>
-          <div class="progress-bar">
-            <span style="width: 75%" data-width="75%"></span>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-header">
-            <p><i class="fa-regular fa-file-code"></i> VS Code</p>
-            <span class="skill-pct">90%</span>
-          </div>
-          <div class="progress-bar">
-            <span style="width: 90%" data-width="90%"></span>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-header">
-            <p><i class="fa-solid fa-server"></i> SQL Server Studio</p>
-            <span class="skill-pct">75%</span>
-          </div>
-          <div class="progress-bar">
-            <span style="width: 75%" data-width="75%"></span>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-header">
-            <p><i class="fa-solid fa-lightbulb"></i> Problem Solving</p>
-            <span class="skill-pct">80%</span>
-          </div>
-          <div class="progress-bar">
-            <span style="width: 80%" data-width="80%"></span>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-header">
-            <p><i class="fa-solid fa-people-group"></i> Teamwork</p>
-            <span class="skill-pct">85%</span>
-          </div>
-          <div class="progress-bar">
-            <span style="width: 85%" data-width="85%"></span>
-          </div>
-        </div>
-        <div class="skill">
-          <div class="skill-header">
-            <p><i class="fa-solid fa-comments"></i> Communication</p>
-            <span class="skill-pct">95%</span>
-          </div>
-          <div class="progress-bar">
-            <span style="width: 95%" data-width="95%"></span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="project" class="project-sections reveal">
-      <div class="section-header">
-        <span class="section-tag">My Work</span>
-        <h2 class="section-title">Projects</h2>
-      </div>
-      <div class="carousel-container">
-        <div class="carousel">
-          <!-- Slide 1 -->
-          <div class="slide active">
-            <img src="images/todo_list.png" alt="To-Do List Application" />
-            <h3>To-Do List Website</h3>
-            <p>
-              A clean task management web app that lets users add, edit, delete,
-              and organize tasks. Built with a strong focus on simplicity and
-              usability, it uses DOM manipulation, local storage, smooth
-              animations, and responsive design principles.
-            </p>
-            <div class="tech-stack">
-              <span>HTML</span><span>CSS</span><span>JavaScript</span>
+          <template id="heroFallback">
+            <div
+              class="photo-fallback w-72 sm:w-80 aspect-[4/5] rounded-[28px]"
+            >
+              <i class="fa-solid fa-image text-3xl text-pink"></i>
+              <p class="text-sm">
+                Add
+                <code class="text-pinklight">images/annrose-profile.jpg</code
+                ><br />to show your photo here ✿
+              </p>
             </div>
-            <div class="project-buttons">
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     TECH MARQUEE
+============================================================ -->
+    <div
+      class="relative z-10 py-4"
+      style="background: linear-gradient(90deg, var(--pinkdeep), var(--pink))"
+    >
+      <div class="marquee-wrap overflow-hidden">
+        <div class="marquee-track font-display text-white text-sm font-medium">
+          <span class="flex items-center gap-2"
+            ><i class="fa-brands fa-react"></i> React.js</span
+          >
+          <span class="flex items-center gap-2"
+            ><i class="fa-brands fa-node-js"></i> Node.js</span
+          >
+          <span class="flex items-center gap-2"
+            ><i class="fa-brands fa-js"></i> JavaScript</span
+          >
+          <span class="flex items-center gap-2"
+            ><i class="fa-solid fa-database"></i> MySQL</span
+          >
+          <span class="flex items-center gap-2"
+            ><i class="fa-brands fa-python"></i> Python</span
+          >
+          <span class="flex items-center gap-2"
+            ><i class="fa-brands fa-html5"></i> HTML &amp; CSS</span
+          >
+          <span class="flex items-center gap-2"
+            ><i class="fa-solid fa-key"></i> JWT Auth</span
+          >
+          <!-- duplicate set for seamless loop -->
+          <span class="flex items-center gap-2"
+            ><i class="fa-brands fa-react"></i> React.js</span
+          >
+          <span class="flex items-center gap-2"
+            ><i class="fa-brands fa-node-js"></i> Node.js</span
+          >
+          <span class="flex items-center gap-2"
+            ><i class="fa-brands fa-js"></i> JavaScript</span
+          >
+          <span class="flex items-center gap-2"
+            ><i class="fa-solid fa-database"></i> MySQL</span
+          >
+          <span class="flex items-center gap-2"
+            ><i class="fa-brands fa-python"></i> Python</span
+          >
+          <span class="flex items-center gap-2"
+            ><i class="fa-brands fa-html5"></i> HTML &amp; CSS</span
+          >
+          <span class="flex items-center gap-2"
+            ><i class="fa-solid fa-key"></i> JWT Auth</span
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================================================
+     ABOUT ME
+============================================================ -->
+    <section
+      id="about"
+      class="relative z-10 max-w-6xl mx-auto px-6 py-24 reveal"
+    >
+      <p class="font-display text-pinklight text-xs tracking-widest uppercase">
+        Get to know me
+      </p>
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold mt-2">
+        ✿ About Me ✿
+      </h2>
+
+      <div class="grid lg:grid-cols-3 gap-10 mt-10">
+        <div class="lg:col-span-2 space-y-4 text-dim leading-relaxed">
+          <p>
+            Hi, I'm <span class="text-ink font-medium">Annrose Akande</span> — a
+            computer programming graduate and software developer focused on
+            building full-stack applications, while also bringing a strong
+            foundation in technical support and data analysis. I love tackling
+            tech problems from different angles: coding a feature, debugging a
+            broken system, or writing SQL queries to pull backend data insights.
+          </p>
+
+          <p class="text-ink font-display font-medium mt-4">
+            Here's a quick look at my core toolkit:
+          </p>
+          <ul class="space-y-2">
+            <li>
+              <span class="text-pink font-medium">Software Development —</span>
+              hands-on with JavaScript, React, Next.js, Node.js, and Java, Python. I've
+              built web dashboards, e-commerce interfaces, and full-stack apps
+              with REST APIs and secure authentication.
+            </li>
+            <li>
+              <span class="text-pink font-medium">Technical Support —</span>
+              system troubleshooting, diagnosing software errors, managing
+              documentation, and keeping things running.
+            </li>
+            <li>
+              <span class="text-pink font-medium">Data &amp; Databases —</span>
+              working with MySQL — structuring data, writing efficient queries,
+              and analyzing backend datasets to track metrics.
+            </li>
+          </ul>
+
+          <p>
+            I've collaborated with teams at Bliss &amp; Giggles and Kinplus
+            Technologies to improve UI/UX, optimize system performance, and
+            deliver reliable technical solutions. Right now, I'm building and
+            documenting a full-stack
+            <span class="text-ink">Job Application Tracker</span> using React,
+            Node.js, and MySQL — sharing progress daily as a way to push my
+            frontend and backend skills together.
+          </p>
+
+          <p>
+            I'm actively seeking entry-level opportunities across
+            <span class="text-ink"
+              >Software Development, Technical Support,</span
+            >
+            and <span class="text-ink">Data Analyst</span> roles where I can
+            dive in, solve problems, and keep growing.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <div
+            class="card rounded-2xl p-5 border-l-4"
+            style="border-left-color: var(--pink)"
+          >
+            <p class="font-display font-medium text-pinklight">My Philosophy</p>
+            <p class="text-dim text-sm mt-2 leading-relaxed">
+              Same instinct, every layer: diagnose first, don't guess. Whether
+              it's a router or a broken component, I trace the problem before I
+              touch the fix.
+            </p>
+          </div>
+          <div
+            class="card rounded-2xl p-5 border-l-4"
+            style="border-left-color: var(--pink)"
+          >
+            <p class="font-display font-medium text-pinklight">The Mission</p>
+            <p class="text-dim text-sm mt-2 leading-relaxed">
+              Build things that are actually useful — clean interfaces backed by
+              solid, well-documented systems, not just pretty screens.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 mt-14 text-center">
+        <div>
+          <p class="font-display text-3xl font-semibold text-pink">10+</p>
+          <p class="text-dim text-xs mt-1">Projects Built</p>
+        </div>
+        <div>
+          <p class="font-display text-3xl font-semibold text-pink">5</p>
+          <p class="text-dim text-xs mt-1">Certifications</p>
+        </div>
+        <div>
+          <p class="font-display text-3xl font-semibold text-pink">6+</p>
+          <p class="text-dim text-xs mt-1">Languages &amp; Frameworks</p>
+        </div>
+        <div>
+          <p class="font-display text-3xl font-semibold text-pink">∞</p>
+          <p class="text-dim text-xs mt-1">Always Learning</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     MY STORY
+============================================================ -->
+    <section
+      id="story"
+      class="relative z-10 max-w-4xl mx-auto px-6 py-24 reveal"
+    >
+      <p class="font-display text-pinklight text-xs tracking-widest uppercase">
+        How I got here
+      </p>
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold mt-2">
+        ✿ My Story ✿
+      </h2>
+
+      <div class="relative story-line pl-8 mt-12 space-y-12">
+        <div class="relative">
+          <span class="story-dot"
+            ><i class="fa-solid fa-plug text-white text-[9px]"></i
+          ></span>
+          <p class="font-hand text-pink text-xl">
+            where the wires actually are
+          </p>
+          <h3 class="font-display text-lg font-medium mt-1">
+            Started in IT support
+          </h3>
+          <p class="text-dim text-sm mt-2 leading-relaxed">
+            Before I wrote a line of front-end code, I was the person fixing the
+            printer, resetting the router, and figuring out why the Wi-Fi
+            dropped mid-meeting — as a Full Stack Developer at Bliss &amp;
+            Giggles and an IT Support Specialist at TD Place. That hands-on
+            troubleshooting instinct — diagnose first, don't guess — is still
+            how I approach every bug I hit today.
+          </p>
+        </div>
+
+        <div class="relative">
+          <span class="story-dot"
+            ><i class="fa-solid fa-graduation-cap text-white text-[9px]"></i
+          ></span>
+          <p class="font-hand text-pink text-xl">formal foundation</p>
+          <h3 class="font-display text-lg font-medium mt-1">
+            Enrolled in Computer Programming, Algonquin College
+          </h3>
+          <p class="text-dim text-sm mt-2 leading-relaxed">
+            Ottawa. This is where the IT-support instincts got structure: data
+            structures, databases, networking theory, and enough Java and Python
+            to stop treating code like a black box. Graduated April 2026 with a
+            much clearer picture of how the whole stack — hardware to UI —
+            actually fits together.
+          </p>
+        </div>
+
+        <div class="relative">
+          <span class="story-dot"
+            ><i class="fa-solid fa-rocket text-white text-[9px]"></i
+          ></span>
+          <p class="font-hand text-pink text-xl">first real ships</p>
+          <h3 class="font-display text-lg font-medium mt-1">
+            Building full-stack apps, end to end
+          </h3>
+          <p class="text-dim text-sm mt-2 leading-relaxed">
+            This is where "it works on my machine" turned into "it works," full
+            stop. I built <span class="text-ink">RoomieLink</span>, a web app
+            that matches students with compatible roommates, using HTML, CSS,
+            JavaScript, a database, and a full authentication system — and a
+            <span class="text-ink">Job Application Tracker</span> that lets
+            users log in and out securely with JWT tokens while it tracks their
+            applications. This is where I fell for the craft side of the full
+            stack: auth flows that actually hold up, layouts that adapt, and the
+            small details that make an app feel considered.
+          </p>
+        </div>
+
+        <div class="relative">
+          <span class="story-dot"
+            ><i class="fa-solid fa-heart text-white text-[9px]"></i
+          ></span>
+          <p class="font-hand text-pink text-xl">main</p>
+          <h3 class="font-display text-lg font-medium mt-1">
+            Building across the full stack, today
+          </h3>
+          <p class="text-dim text-sm mt-2 leading-relaxed">
+            Now I move deliberately between domains — segmenting enterprise
+            networks, working with cloud infrastructure, tuning relational
+            schemas, and shipping React interfaces — because I think the most
+            useful engineers are the ones who understand the whole path a
+            request takes, not just their one layer of it. Outside of that, I
+            write on Substack about the parts of being human that code can't
+            fix.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     SKILLS / TOOLKIT
+============================================================ -->
+    <section
+      id="skills"
+      class="relative z-10 max-w-6xl mx-auto px-6 py-24 reveal"
+    >
+      <p class="font-display text-pinklight text-xs tracking-widest uppercase">
+        What I work with
+      </p>
+      <h2 class="font-display text-3xl sm:text-4xl font-semibold mt-2">
+        ✿ My Toolkit ✿
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-8 mt-10">
+        <div class="card rounded-2xl p-6">
+          <p class="font-display font-medium text-pink mb-4">
+            <i class="fa-solid fa-code mr-2"></i>Software Development
+          </p>
+          <div class="flex flex-wrap gap-2" id="skillsDev"></div>
+        </div>
+        <div class="card rounded-2xl p-6">
+          <p class="font-display font-medium text-pink mb-4">
+            <i class="fa-solid fa-headset mr-2"></i>Technical Support
+          </p>
+          <div class="flex flex-wrap gap-2" id="skillsSupport"></div>
+        </div>
+        <div class="card rounded-2xl p-6">
+          <p class="font-display font-medium text-pink mb-4">
+            <i class="fa-solid fa-database mr-2"></i>Data &amp; Databases
+          </p>
+          <div class="flex flex-wrap gap-2" id="skillsData"></div>
+        </div>
+        <div class="card rounded-2xl p-6">
+          <p class="font-display font-medium text-pink mb-4">
+            <i class="fa-solid fa-list-check mr-2"></i>Project Management
+          </p>
+          <div class="flex flex-wrap gap-2" id="skillsPM"></div>
+        </div>
+        <div class="card rounded-2xl p-6 md:col-span-2">
+          <p class="font-display font-medium text-pink mb-4">
+            <i class="fa-solid fa-comments mr-2"></i>Communication &amp; Soft
+            Skills
+          </p>
+          <div class="flex flex-wrap gap-2" id="skillsSoft"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     CERTIFICATES
+============================================================ -->
+    <section
+      id="certificates"
+      class="relative z-10 max-w-6xl mx-auto px-6 py-24 reveal"
+    >
+      <div class="text-center">
+        <h2 class="font-display text-3xl sm:text-4xl font-semibold">
+          ✿ Certificates ✿
+        </h2>
+        <p class="text-dim mt-2">
+          Professional achievements &amp; certifications
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+        <div class="card card-hover rounded-2xl p-6">
+          <div class="flex items-start justify-between">
+            <h3 class="font-display font-medium">
+              Introduction to Software Engineering
+            </h3>
+            <span
+              class="text-pinklight text-xs font-display whitespace-nowrap ml-2"
+              >2026</span
+            >
+          </div>
+          <p class="text-dim text-xs mt-1">IBM</p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="tag-pill text-[10px] px-2 py-1 rounded-full"
+              >Back-end Operations</span
+            >
+            <span class="tag-pill text-[10px] px-2 py-1 rounded-full"
+              >SDLC</span
+            >
+          </div>
+        </div>
+
+        <div class="card card-hover rounded-2xl p-6">
+          <div class="flex items-start justify-between">
+            <h3 class="font-display font-medium">
+              AWS Foundations: Cloud Essentials
+            </h3>
+            <span
+              class="text-pinklight text-xs font-display whitespace-nowrap ml-2"
+              >2026</span
+            >
+          </div>
+          <p class="text-dim text-xs mt-1">Amazon Web Services (AWS)</p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="tag-pill text-[10px] px-2 py-1 rounded-full"
+              >Cloud Computing</span
+            >
+            <span class="tag-pill text-[10px] px-2 py-1 rounded-full"
+              >AWS Core Services</span
+            >
+          </div>
+        </div>
+
+        <div class="card card-hover rounded-2xl p-6">
+          <div class="flex items-start justify-between">
+            <h3 class="font-display font-medium">
+              Fundamentals of Predictive Project Management
+            </h3>
+            <span
+              class="text-pinklight text-xs font-display whitespace-nowrap ml-2"
+              >2025</span
+            >
+          </div>
+          <p class="text-dim text-xs mt-1">Project Management Institute</p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="tag-pill text-[10px] px-2 py-1 rounded-full"
+              >Project Tracking</span
+            >
+            <span class="tag-pill text-[10px] px-2 py-1 rounded-full"
+              >Risk Management</span
+            >
+          </div>
+        </div>
+
+        <div class="card card-hover rounded-2xl p-6">
+          <div class="flex items-start justify-between">
+            <h3 class="font-display font-medium">IT Customer Support Basics</h3>
+            <span
+              class="text-pinklight text-xs font-display whitespace-nowrap ml-2"
+              >2026</span
+            >
+          </div>
+          <p class="text-dim text-xs mt-1">Cisco Networking Academy</p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="tag-pill text-[10px] px-2 py-1 rounded-full"
+              >Remote Troubleshooting</span
+            >
+            <span class="tag-pill text-[10px] px-2 py-1 rounded-full"
+              >Help Desk</span
+            >
+          </div>
+        </div>
+
+        <div class="card card-hover rounded-2xl p-6">
+          <div class="flex items-start justify-between">
+            <h3 class="font-display font-medium">
+              Agile Project Management Foundation
+            </h3>
+            <span
+              class="text-pinklight text-xs font-display whitespace-nowrap ml-2"
+              >2026</span
+            >
+          </div>
+          <p class="text-dim text-xs mt-1">LinkedIn Learning</p>
+          <div class="flex flex-wrap gap-2 mt-4">
+            <span class="tag-pill text-[10px] px-2 py-1 rounded-full"
+              >Agile</span
+            >
+            <span class="tag-pill text-[10px] px-2 py-1 rounded-full"
+              >Sprint Planning</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     EDUCATION
+============================================================ -->
+    <section
+      id="education"
+      class="relative z-10 max-w-4xl mx-auto px-6 py-24 reveal"
+    >
+      <div class="text-center">
+        <h2 class="font-display text-3xl sm:text-4xl font-semibold">
+          ✿ Education ✿
+        </h2>
+        <p class="text-dim mt-2">My academic &amp; hands-on learning journey</p>
+      </div>
+
+      <div class="space-y-5 mt-10">
+        <div class="card card-hover rounded-2xl p-6 flex items-start gap-4">
+          <div
+            class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
+            style="background: rgba(255, 79, 160, 0.15)"
+          >
+            <i class="fa-solid fa-laptop-code text-pink"></i>
+          </div>
+          <div>
+            <h3 class="font-display font-medium">
+              Web Developer Intern — Kinplus Technologies
+            </h3>
+            <p class="text-pinklight text-xs mt-1">Oct 2023 – Mar 2024</p>
+            <p class="text-dim text-sm mt-2 leading-relaxed">
+              My first real-world dive into building websites — a hands-on,
+              school-like stretch where I learned to build responsive UI
+              components and optimize them for production, outside of a
+              classroom.
+            </p>
+          </div>
+        </div>
+
+        <div class="card card-hover rounded-2xl p-6 flex items-start gap-4">
+          <div
+            class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0"
+            style="background: rgba(255, 79, 160, 0.15)"
+          >
+            <i class="fa-solid fa-graduation-cap text-pink"></i>
+          </div>
+          <div>
+            <h3 class="font-display font-medium">
+              Diploma in Computer Programming — Algonquin College
+            </h3>
+            <p class="text-pinklight text-xs mt-1">Graduated April 2026</p>
+            <p class="text-dim text-sm mt-2 leading-relaxed">
+              Algonquin College of Applied Arts and Technology, Ottawa —
+              full-stack development, databases, networking fundamentals, and
+              software engineering practices.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     PROJECTS
+============================================================ -->
+    <section
+      id="projects"
+      class="relative z-10 max-w-6xl mx-auto px-6 py-24 reveal"
+    >
+      <div class="text-center">
+        <h2 class="font-display text-3xl sm:text-4xl font-semibold">
+          ✿ Projects ✿
+        </h2>
+        <p class="text-dim mt-2">
+          A few things I've built, organized by what they touch
+        </p>
+      </div>
+
+      <div
+        class="flex flex-wrap justify-center gap-3 mt-10 font-display text-xs"
+        id="domainTabs"
+      >
+        <button
+          data-domain="all"
+          data-active="true"
+          class="tab-btn px-4 py-2 rounded-full border border-border text-dim"
+        >
+          All
+        </button>
+        <button
+          data-domain="it"
+          class="tab-btn px-4 py-2 rounded-full border border-border text-dim"
+        >
+          IT &amp; Networking
+        </button>
+        <button
+          data-domain="web"
+          class="tab-btn px-4 py-2 rounded-full border border-border text-dim"
+        >
+          Web Development
+        </button>
+        <button
+          data-domain="db"
+          class="tab-btn px-4 py-2 rounded-full border border-border text-dim"
+        >
+          Databases
+        </button>
+        <button
+          data-domain="ai"
+          class="tab-btn px-4 py-2 rounded-full border border-border text-dim"
+        >
+          AI &amp; Automation
+        </button>
+      </div>
+
+      <div id="projectGrid" class="grid sm:grid-cols-2 gap-6 mt-10">
+        <!-- WEB: RoomieLink -->
+        <article
+          class="project-card card card-hover rounded-2xl overflow-hidden flex-col"
+          data-domain="web"
+          data-visible="true"
+        >
+          <div class="project-media h-48 overflow-hidden">
+            <div class="media-track">
+              <div class="media-slide">
+                <img
+                  src="images/roomielink1.png"
+                  alt="RoomieLink screenshot 1"
+                  onerror="this.parentElement.remove()"
+                />
+              </div>
+              <div class="media-slide">
+                <img
+                  src="images/roomielink3.png"
+                  alt="RoomieLink screenshot 2"
+                  onerror="this.parentElement.remove()"
+                />
+              </div>
+              <div class="media-slide">
+                <video
+                  src="images/roomielinkVideo.mp4"
+                  controls
+                  muted
+                  onerror="this.parentElement.remove()"
+                ></video>
+              </div>
+            </div>
+            <div class="media-empty photo-fallback h-48" style="display: none">
+              <i class="fa-solid fa-people-roof text-2xl text-pink"></i>
+              <p class="text-xs px-4">
+                Add images/roomielink-1.jpg, -2.jpg, or a demo video here
+              </p>
+            </div>
+            <button class="media-prev" style="display: none">‹</button>
+            <button class="media-next" style="display: none">›</button>
+            <div class="media-dots"></div>
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <span
+              class="tag-pill text-[10px] px-2 py-1 rounded-full self-start mb-3"
+              >FULL-STACK - IN PROGRESS</span
+            >
+            <h3 class="font-display text-lg font-semibold">
+              RoomieLink — Roommate Matching Platform
+            </h3>
+            <p class="text-dim text-sm mt-2 leading-relaxed flex-1">
+              A web app that matches students with compatible roommates. Built
+              with HTML, CSS, and JavaScript, backed by a database and a full
+              authentication system so users can create and manage their own
+              profiles securely.
+            </p>
+            <div
+              class="flex flex-wrap gap-2 mt-4 font-display text-[11px] text-dim"
+            >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >HTML/CSS/JS</span
+              >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >Database</span
+              >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >Authentication</span
+              >
+            </div>
+            <div class="flex flex-wrap gap-2 mt-5">
               <a
-                href="https://annie-todolist-web.netlify.app/"
-                class="btn"
+                href="#"
                 target="_blank"
                 rel="noopener"
-                >View Project</a
+                class="proj-btn proj-btn-fill"
+                ><i class="fa-solid fa-arrow-up-right-from-square"></i> Live
+                Demo</a
               >
               <a
-                href="https://github.com/Annrose-debug/todo-app"
-                class="btn-secondary"
+                href="#"
                 target="_blank"
                 rel="noopener"
+                class="proj-btn proj-btn-outline"
                 ><i class="fa-brands fa-github"></i> GitHub</a
               >
             </div>
           </div>
+        </article>
 
-          <!-- Slide 2 -->
-          <div class="slide">
-            <img src="images/weatherNow.png" alt="WeatherNow Application" />
-            <h3>WeatherNow Web Application</h3>
-            <p>
-              A responsive app that fetches real-time weather data for any city
-              via an external API. Displays temperature, conditions, humidity,
-              and wind speed with a clean, intuitive UI built for both desktop
-              and mobile devices.
-            </p>
-            <div class="tech-stack">
-              <span>HTML</span><span>CSS</span><span>JavaScript</span>
+        <!-- WEB: Job Application Tracker -->
+        <article
+          class="project-card card card-hover rounded-2xl overflow-hidden flex-col"
+          data-domain="web"
+          data-visible="true"
+        >
+          <div class="project-media h-48 overflow-hidden">
+            <div class="media-track">
+              <div class="media-slide">
+                <img
+                  src="images/jobtrckrimg.png"
+                  alt="Job Application Tracker screenshot 1"
+                  onerror="this.parentElement.remove()"
+                />
+              </div>
+              <div class="media-slide">
+                <img
+                  src="images/jobtrackerimg.png"
+                  alt="Job Application Tracker screenshot 2"
+                  onerror="this.parentElement.remove()"
+                />
+              </div>
+              <div class="media-slide">
+                <video
+                  src="images/JobTrackr2.mp4"
+                  controls
+                  muted
+                  onerror="this.parentElement.remove()"
+                ></video>
+              </div>
             </div>
-            <div class="project-buttons">
+            <div class="media-empty photo-fallback h-48" style="display: none">
+              <i class="fa-solid fa-list-check text-2xl text-pink"></i>
+              <p class="text-xs px-4">
+                Add images/job-tracker-1.jpg, -2.jpg, or a demo video here
+              </p>
+            </div>
+            <button class="media-prev" style="display: none">‹</button>
+            <button class="media-next" style="display: none">›</button>
+            <div class="media-dots"></div>
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <span
+              class="tag-pill text-[10px] px-2 py-1 rounded-full self-start mb-3"
+              >IN PROGRESS</span
+            >
+            <h3 class="font-display text-lg font-semibold">
+              Job Application Tracker
+            </h3>
+            <p class="text-dim text-sm mt-2 leading-relaxed flex-1">
+              A full-stack app that helps users track their job applications,
+              with secure login and logout powered by JWT tokens. Currently
+              being built and documented in public with React, Node.js, and
+              MySQL.
+            </p>
+            <div
+              class="flex flex-wrap gap-2 mt-4 font-display text-[11px] text-dim"
+            >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >React</span
+              >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >Node.js</span
+              >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >JWT Auth</span
+              >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >MySQL</span
+              >
+            </div>
+            <div class="flex flex-wrap gap-2 mt-5">
               <a
-                href="https://annrose-weather.netlify.app/"
-                class="btn"
+                href="#"
                 target="_blank"
                 rel="noopener"
-                >View Project</a
+                class="proj-btn proj-btn-fill"
+                ><i class="fa-solid fa-arrow-up-right-from-square"></i> Live
+                Demo</a
+              >
+              <a
+                href="https://github.com/Annrose-debug/job-tracker-app"
+                target="_blank"
+                rel="noopener"
+                class="proj-btn proj-btn-outline"
+                ><i class="fa-brands fa-github"></i> GitHub</a
+              >
+            </div>
+          </div>
+        </article>
+
+        <!-- WEB: SaviFinance -->
+        <article
+          class="project-card card card-hover rounded-2xl overflow-hidden flex-col"
+          data-domain="web"
+          data-visible="true"
+        >
+          <div class="project-media h-48 overflow-hidden">
+            <div class="media-track">
+              <div class="media-slide">
+                <img
+                  src="images/savifinance-1.jpg"
+                  alt="SaviFinance screenshot 1"
+                  onerror="this.parentElement.remove()"
+                />
+              </div>
+              <div class="media-slide">
+                <img
+                  src="images/savifinance-2.jpg"
+                  alt="SaviFinance screenshot 2"
+                  onerror="this.parentElement.remove()"
+                />
+              </div>
+            </div>
+            <div class="media-empty photo-fallback h-48" style="display: none">
+              <i class="fa-solid fa-money-bill-trend-up text-2xl text-pink"></i>
+              <p class="text-xs px-4">
+                Add images/savifinance-1.jpg, -2.jpg here
+              </p>
+            </div>
+            <button class="media-prev" style="display: none">‹</button>
+            <button class="media-next" style="display: none">›</button>
+            <div class="media-dots"></div>
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <span
+              class="tag-pill text-[10px] px-2 py-1 rounded-full self-start mb-3"
+              >CLIENT PROJECT</span
+            >
+            <h3 class="font-display text-lg font-semibold">
+              SaviFinance — Data Scraping &amp; Expense Tracking
+            </h3>
+            <p class="text-dim text-sm mt-2 leading-relaxed flex-1">
+              Collaborated on a fintech client project focused on expense
+              tracking. Built automated scripts to scrape and process Uber
+              transaction data, feeding it into a system for tracking and
+              analyzing user expenses.
+            </p>
+            <div
+              class="flex flex-wrap gap-2 mt-4 font-display text-[11px] text-dim"
+            >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >Web Scraping</span
+              >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >Data Processing</span
+              >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >JWT</span
+              >
+            </div>
+            <div class="flex flex-wrap gap-2 mt-5">
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener"
+                class="proj-btn proj-btn-outline"
+                ><i class="fa-brands fa-github"></i> GitHub</a
+              >
+            </div>
+          </div>
+        </article>
+
+        <!-- WEB: WeatherNow -->
+        <article
+          class="project-card card card-hover rounded-2xl overflow-hidden flex-col"
+          data-domain="web"
+          data-visible="true"
+        >
+          <div class="project-media h-48 overflow-hidden">
+            <div class="media-track">
+              <div class="media-slide">
+                <img
+                  src="images/weatherNow.png"
+                  alt="WeatherNow screenshot 1"
+                  onerror="this.parentElement.remove()"
+                />
+              </div>
+              <div class="media-slide">
+                <img
+                  src="images/WeatherNow2.png"
+                  alt="WeatherNow screenshot 2"
+                  onerror="this.parentElement.remove()"
+                />
+              </div>
+              <div class="media-slide">
+                <video
+                  src="images/WeatherApp.mp4"
+                  controls
+                  muted
+                  onerror="this.parentElement.remove()"
+                ></video>
+              </div>
+            </div>
+            <div class="media-empty photo-fallback h-48" style="display: none">
+              <i class="fa-solid fa-cloud-sun text-2xl text-pink"></i>
+              <p class="text-xs px-4">
+                Add images/weathernow-1.jpg, -2.jpg, or a demo video here
+              </p>
+            </div>
+            <button class="media-prev" style="display: none">‹</button>
+            <button class="media-next" style="display: none">›</button>
+            <div class="media-dots"></div>
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <span
+              class="tag-pill text-[10px] px-2 py-1 rounded-full self-start mb-3"
+              >DEPLOYED</span
+            >
+            <h3 class="font-display text-lg font-semibold">WeatherNow</h3>
+            <p class="text-dim text-sm mt-2 leading-relaxed flex-1">
+              A weather app with real-time data and a visual interface that
+              changes with current conditions, built with responsive design and
+              smooth, dynamic content rendering from an external API.
+            </p>
+            <div
+              class="flex flex-wrap gap-2 mt-4 font-display text-[11px] text-dim"
+            >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >HTML</span
+              >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >JavaScript</span
+              >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >Weather API</span
+              >
+            </div>
+            <div class="flex flex-wrap gap-2 mt-5">
+              <a
+                href="https://annrose-weather.netlify.app/"
+                target="_blank"
+                rel="noopener"
+                class="proj-btn proj-btn-fill"
+                ><i class="fa-solid fa-arrow-up-right-from-square"></i> Live
+                Demo</a
               >
               <a
                 href="https://github.com/Annrose-debug/weather-app"
-                class="btn-secondary"
                 target="_blank"
                 rel="noopener"
+                class="proj-btn proj-btn-outline"
                 ><i class="fa-brands fa-github"></i> GitHub</a
               >
             </div>
           </div>
+        </article>
 
-          <!-- Slide 3 -->
-          <div class="slide">
-            <img src="images/portfolio_page.png" alt="Personal Portfolio" />
-            <h3>Personal Portfolio</h3>
-            <p>
-              This portfolio site — the one you're on — showcases my skills,
-              projects, and growth as a front-end developer. Fully responsive
-              with scroll animations, a typing effect, a project carousel, and
-              pastel neon aesthetics.
-            </p>
-            <div class="tech-stack">
-              <span>HTML</span><span>CSS</span><span>JavaScript</span>
-            </div>
-            <div class="project-buttons">
-              <a
-                href="https://annrose-akande.netlify.app/"
-                class="btn"
-                target="_blank"
-                rel="noopener"
-                >View Project</a
-              >
-              <a
-                href="https://github.com/Annrose-debug/AnnroseAkandePortfolio1"
-                class="btn-secondary"
-                target="_blank"
-                rel="noopener"
-                ><i class="fa-brands fa-github"></i> GitHub</a
-              >
-            </div>
-          </div>
-
-          <!-- Slide 4 -->
-          <div class="slide">
+        <!-- WEB: E-commerce -->
+        <article
+          class="project-card card card-hover rounded-2xl overflow-hidden flex-col"
+          data-domain="web"
+          data-visible="true"
+        >
+          <div class="w-full h-40 overflow-hidden">
             <img
-              src="images/skincare_landing_page.png"
-              alt="GlowUp Skincare Landing Page"
+              class="project-thumb w-full h-full object-cover"
+              src="images/ecommerce2.png"
+              alt="E-commerce Product Page"
+              onerror="
+                this.parentElement.innerHTML =
+                  '<div class=&quot;photo-fallback h-40&quot;><i class=&quot;fa-solid fa-cart-shopping text-2xl text-pink&quot;></i><p class=&quot;text-xs&quot;>Add images/ecommerce.jpg</p></div>'
+              "
             />
-            <h3>GlowUp — Skincare Brand Landing Page</h3>
-            <p>
-              A responsive landing page for a modern skincare brand with clean,
-              elegant aesthetics. Features well-structured sections, strong
-              CTAs, subtle animations, and a premium feel that adapts smoothly
-              across all screen sizes.
-            </p>
-            <div class="tech-stack">
-              <span>HTML</span><span>CSS</span><span>JavaScript</span>
-            </div>
-            <div class="project-buttons">
-              <a
-                href="https://annie-glow-up.netlify.app/"
-                class="btn"
-                target="_blank"
-                rel="noopener"
-                >View Project</a
-              >
-              <a
-                href="https://github.com/Annrose-debug/skincare_landing_page"
-                class="btn-secondary"
-                target="_blank"
-                rel="noopener"
-                ><i class="fa-brands fa-github"></i> GitHub</a
-              >
-            </div>
           </div>
-
-          <!-- Slide 5 -->
-          <div class="slide">
-            <img src="images/expense-tracker.png" alt="Expense Tracker" />
-            <h3>Expense Tracker Web Application</h3>
-            <p>
-              A responsive web app for tracking and managing daily expenses.
-              Users can add, view, and delete expenses with a running total.
-              Uses local storage to persist data across page refreshes, with
-              clean UI and strong DOM manipulation logic.
+          <div class="p-6 flex flex-col flex-1">
+            <span
+              class="tag-pill text-[10px] px-2 py-1 rounded-full self-start mb-3"
+              >DEPLOYED</span
+            >
+            <h3 class="font-display text-lg font-semibold">
+              E-commerce Product Page
+            </h3>
+            <p class="text-dim text-sm mt-2 leading-relaxed flex-1">
+              A responsive product page built with React, featuring reusable
+              components and interactive UI, focused on scalability and clean
+              architecture.
             </p>
-            <div class="tech-stack">
-              <span>HTML</span><span>CSS</span><span>JavaScript</span>
-            </div>
-            <div class="project-buttons">
-              <a
-                href="https://expensetracker005.netlify.app/"
-                class="btn"
-                target="_blank"
-                rel="noopener"
-                >View Project</a
+            <div
+              class="flex flex-wrap gap-2 mt-4 font-display text-[11px] text-dim"
+            >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >React</span
               >
-              <a
-                href="https://github.com/Annrose-debug/expense-tracker"
-                class="btn-secondary"
-                target="_blank"
-                rel="noopener"
-                ><i class="fa-brands fa-github"></i> GitHub</a
+              <span class="px-2 py-1 border border-border rounded-full"
+                >JavaScript</span
               >
             </div>
+            <a
+              href="https://ecommerce-product-page-annrose-akande.netlify.app/"
+              target="_blank"
+              rel="noopener"
+              class="text-pink text-xs font-display mt-4 hover:underline"
+              >view project →</a
+            >
           </div>
+        </article>
 
-          <!-- Slide 6 -->
-          <div class="slide">
+        <!-- WEB: Expense Tracker -->
+        <article
+          class="project-card card card-hover rounded-2xl overflow-hidden flex-col"
+          data-domain="web"
+          data-visible="true"
+        >
+          <div class="w-full h-40 overflow-hidden">
             <img
-              src="images/ecommerce_page.png"
-              alt="Vitamin C Serum E-commerce Page"
+              class="project-thumb w-full h-full object-cover"
+              src="images/expense-tracker.png"
+              alt="Expense Tracker"
+              onerror="
+                this.parentElement.innerHTML =
+                  '<div class=&quot;photo-fallback h-40&quot;><i class=&quot;fa-solid fa-wallet text-2xl text-pink&quot;></i><p class=&quot;text-xs&quot;>Add images/expense-tracker.jpg</p></div>'
+              "
             />
-            <h3>Vitamin C Serum — E-commerce Product Page</h3>
-            <p>
-              A modern, responsive e-commerce product page showcasing a Vitamin
-              C serum with dynamic quantity selection, price updates, and
-              conversion-focused design. Built with React and Vite,
-              demonstrating reusable component architecture.
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <span
+              class="tag-pill text-[10px] px-2 py-1 rounded-full self-start mb-3"
+              >DEPLOYED</span
+            >
+            <h3 class="font-display text-lg font-semibold">
+              Expense Tracker Web App
+            </h3>
+            <p class="text-dim text-sm mt-2 leading-relaxed flex-1">
+              A personal finance app that lets users track expenses and manage
+              spending, with data persisted via LocalStorage and dynamic,
+              responsive UI updates.
             </p>
-            <div class="tech-stack">
-              <span>React</span><span>JavaScript</span><span>CSS3</span
-              ><span>Vite</span>
-            </div>
-            <div class="project-buttons">
-              <a
-                href="https://ecommerce-product-page-annrose-akande.netlify.app/"
-                class="btn"
-                target="_blank"
-                rel="noopener"
-                >View Project</a
+            <div
+              class="flex flex-wrap gap-2 mt-4 font-display text-[11px] text-dim"
+            >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >JavaScript</span
               >
-              <a
-                href="https://github.com/Annrose-debug/ecommerce-product-page"
-                class="btn-secondary"
-                target="_blank"
-                rel="noopener"
-                ><i class="fa-brands fa-github"></i> GitHub</a
+              <span class="px-2 py-1 border border-border rounded-full"
+                >LocalStorage</span
               >
             </div>
+            <a
+              href="https://expensetracker005.netlify.app/"
+              target="_blank"
+              rel="noopener"
+              class="text-pink text-xs font-display mt-4 hover:underline"
+              >view project →</a
+            >
+          </div>
+        </article>
+
+        <!-- IT: VLAN Lab -->
+        <article
+          class="project-card card card-hover rounded-2xl overflow-hidden flex-col"
+          data-domain="it"
+          data-visible="true"
+        >
+          <div class="w-full h-40 overflow-hidden">
+            <img
+              class="project-thumb w-full h-full object-cover"
+              src="images/Enterprisedemo.png"
+              alt="Enterprise Network Segmentation Lab"
+              onerror="
+                this.parentElement.innerHTML =
+                  '<div class=&quot;photo-fallback h-40&quot;><i class=&quot;fa-solid fa-network-wired text-2xl text-pink&quot;></i><p class=&quot;text-xs&quot;>Add images/vlan-lab.jpg</p></div>'
+              "
+            />
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <span
+              class="tag-pill text-[10px] px-2 py-1 rounded-full self-start mb-3"
+              >CONFIGURED</span
+            >
+            <h3 class="font-display text-lg font-semibold">
+              Enterprise Network Segmentation &amp; ACL Lab
+            </h3>
+            <p class="text-dim text-sm mt-2 leading-relaxed flex-1">
+              A segmented enterprise network in Cisco Packet Tracer with
+              Router-on-a-Stick inter-VLAN routing, dynamic DHCP, and Extended
+              ACLs enforcing zero-trust isolation between IT, Staff, and Guest
+              networks — verified with live ping tests.
+            </p>
+            <div
+              class="flex flex-wrap gap-2 mt-4 font-display text-[11px] text-dim"
+            >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >Cisco IOS</span
+              >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >VLANs</span
+              >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >ACLs</span
+              >
+            </div>
+            <a
+              href="https://github.com/Annrose-debug/enterprise-vlan-acl-segmentation"
+              target="_blank"
+              rel="noopener"
+              class="text-pink text-xs font-display mt-4 hover:underline"
+              >github →</a
+            >
+          </div>
+        </article>
+
+        <!-- IT: AWS -->
+        <article
+          class="project-card card card-hover rounded-2xl overflow-hidden flex-col"
+          data-domain="it"
+          data-visible="true"
+        >
+          <div class="w-full h-40 overflow-hidden">
+            <img
+              class="project-thumb w-full h-full object-cover"
+              src="images/AWS.png"
+              alt="AWS Cloud Infrastructure"
+              onerror="
+                this.parentElement.innerHTML =
+                  '<div class=&quot;photo-fallback h-40&quot;><i class=&quot;fa-brands fa-aws text-2xl text-pink&quot;></i><p class=&quot;text-xs&quot;>Add images/aws-iam.jpg</p></div>'
+              "
+            />
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <span
+              class="tag-pill text-[10px] px-2 py-1 rounded-full self-start mb-3"
+              >DEPLOYED</span
+            >
+            <h3 class="font-display text-lg font-semibold">
+              AWS Cloud Infrastructure &amp; IAM Security
+            </h3>
+            <p class="text-dim text-sm mt-2 leading-relaxed flex-1">
+              Secure cloud deployment on AWS with least-privilege IAM policies,
+              a custom Security Group restricting SSH to a trusted IP, and an
+              Ubuntu EC2 instance running Nginx with centralized S3 log
+              collection.
+            </p>
+            <div
+              class="flex flex-wrap gap-2 mt-4 font-display text-[11px] text-dim"
+            >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >AWS</span
+              >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >IAM</span
+              >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >EC2 / S3</span
+              >
+            </div>
+            <a
+              href="https://github.com/Annrose-debug/AWS-Cloud-Infrastructure-IAM-Lab"
+              target="_blank"
+              rel="noopener"
+              class="text-pink text-xs font-display mt-4 hover:underline"
+              >github →</a
+            >
+          </div>
+        </article>
+
+        <!-- DB -->
+        <article
+          class="project-card card card-hover rounded-2xl overflow-hidden flex-col"
+          data-domain="db"
+          data-visible="true"
+        >
+          <div class="w-full h-40 overflow-hidden">
+            <img
+              class="project-thumb w-full h-full object-cover"
+              src="images/db-schema.jpg"
+              alt="Relational Schema & Query Tuning"
+              onerror="
+                this.parentElement.innerHTML =
+                  '<div class=&quot;photo-fallback h-40&quot;><i class=&quot;fa-solid fa-database text-2xl text-pink&quot;></i><p class=&quot;text-xs&quot;>Add images/db-schema.jpg</p></div>'
+              "
+            />
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <span
+              class="tag-pill text-[10px] px-2 py-1 rounded-full self-start mb-3"
+              >CONFIGURED</span
+            >
+            <h3 class="font-display text-lg font-semibold">
+              Relational Schema &amp; Query Tuning
+            </h3>
+            <p class="text-dim text-sm mt-2 leading-relaxed flex-1">
+              Normalized database layouts across MySQL and SQL Server Studio,
+              with multi-table JOINs, stored procedures, and index optimization
+              to cut query latency.
+            </p>
+            <div
+              class="flex flex-wrap gap-2 mt-4 font-display text-[11px] text-dim"
+            >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >MySQL</span
+              >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >SQL Server Studio</span
+              >
+            </div>
+          </div>
+        </article>
+
+        <!-- AI -->
+        <article
+          class="project-card card card-hover rounded-2xl overflow-hidden flex-col"
+          data-domain="ai"
+          data-visible="true"
+        >
+          <div class="w-full h-40 overflow-hidden">
+            <img
+              class="project-thumb w-full h-full object-cover"
+              src="images/FinancialImage.png"
+              alt="Financial Transaction Insights"
+              onerror="
+                this.parentElement.innerHTML =
+                  '<div class=&quot;photo-fallback h-40&quot;><i class=&quot;fa-solid fa-chart-line text-2xl text-pink&quot;></i><p class=&quot;text-xs&quot;>Add images/financial-insights.jpg</p></div>'
+              "
+            />
+          </div>
+          <div class="p-6 flex flex-col flex-1">
+            <span
+              class="tag-pill text-[10px] px-2 py-1 rounded-full self-start mb-3"
+              >DEPLOYED</span
+            >
+            <h3 class="font-display text-lg font-semibold">
+              Financial Transaction Insights API &amp; Dashboard
+            </h3>
+            <p class="text-dim text-sm mt-2 leading-relaxed flex-1">
+              An end-to-end pipeline that ingests raw bank CSVs,
+              auto-categorizes spending, flags high-value transactions for
+              review, and serves it all through a FastAPI backend with a live
+              dashboard — CI/CD'd to Render.
+            </p>
+            <div
+              class="flex flex-wrap gap-2 mt-4 font-display text-[11px] text-dim"
+            >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >FastAPI</span
+              >
+              <span class="px-2 py-1 border border-border rounded-full"
+                >Python</span
+              >
+            </div>
+            <a
+              href="https://financial-transaction-insights.onrender.com/dashboard"
+              target="_blank"
+              rel="noopener"
+              class="text-pink text-xs font-display mt-4 hover:underline"
+              >view dashboard →</a
+            >
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================================================
+     EXPERIENCE
+============================================================ -->
+    <section
+      id="experience"
+      class="relative z-10 max-w-4xl mx-auto px-6 py-24 reveal"
+    >
+      <div class="text-center">
+        <h2 class="font-display text-3xl sm:text-4xl font-semibold">
+          ✿ Experience ✿
+        </h2>
+      </div>
+
+      <div class="space-y-5 mt-10">
+        <div
+          class="card card-hover rounded-2xl p-6 flex flex-col sm:flex-row sm:items-start gap-4"
+        >
+          <span
+            class="tag-pill font-display text-xs rounded-full px-3 py-1 whitespace-nowrap self-start"
+            >PAST (CONTRACT ENDED)</span
+          >
+          <div>
+            <h3 class="font-display text-lg font-semibold">
+              Full Stack Developer & Technical Support Specialist
+            </h3>
+            <p class="text-pinklight text-xs mt-1">Bliss &amp; Giggles Inc</p>
+            <p class="text-dim text-sm mt-2 leading-relaxed">
+              Building and maintaining web features across the stack, with a
+              strong technical-support foundation — end-user troubleshooting,
+              diagnostics, and workflow optimization alongside day-to-day
+              development.
+            </p>
           </div>
         </div>
 
-        <!-- Navigation -->
-        <button class="carousel-arrow left-arrow" aria-label="Previous project">
-          &#8592;
-        </button>
-        <button class="carousel-arrow right-arrow" aria-label="Next project">
-          &#8594;
-        </button>
-        <div class="carousel-dots"></div>
+        <div
+          class="card card-hover rounded-2xl p-6 flex flex-col sm:flex-row sm:items-start gap-4"
+        >
+          <span
+            class="tag-pill font-display text-xs rounded-full px-3 py-1 whitespace-nowrap self-start"
+            >PAST</span
+          >
+          <div>
+            <h3 class="font-display text-lg font-semibold">
+              IT Support Specialist
+            </h3>
+            <p class="text-pinklight text-xs mt-1">TD Place</p>
+            <p class="text-dim text-sm mt-2 leading-relaxed">
+              Local network maintenance, on-site technical support, and hardware
+              provisioning across venue systems.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section reveal" id="contact">
-      <div class="section-header">
-        <span class="section-tag">Let's Talk</span>
-        <h2 class="section-title">Contact Me</h2>
+    <!-- ============================================================
+     PASSIONS / OFF-DUTY
+============================================================ -->
+    <section
+      id="passions"
+      class="relative z-10 max-w-6xl mx-auto px-6 py-24 reveal"
+    >
+      <div class="text-center">
+        <h2 class="font-display text-3xl sm:text-4xl font-semibold">
+          ✿ Off-Duty ✿
+        </h2>
+        <p class="text-dim mt-2">
+          What I'm into when I close the laptop (sometimes)
+        </p>
       </div>
-      <p class="contact-info">
-        Open to collaborations, opportunities, and questions — don't hesitate to
-        reach out!
-      </p>
-      <div class="contact-container">
-        <a href="mailto:annrose.akande@outlook.com" class="contact-item">
-          <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
-          <h3>Email</h3>
-          <p>annrose.akande@outlook.com</p>
-        </a>
-        <a href="tel:+16132969929" class="contact-item">
-          <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
-          <h3>Phone</h3>
-          <p>+1 (613) 296-9929</p>
-        </a>
-        <a
-          href="https://github.com/Annrose-debug"
-          class="contact-item"
-          target="_blank"
-          rel="noopener"
-        >
-          <div class="contact-icon"><i class="fa-brands fa-github"></i></div>
-          <h3>GitHub</h3>
-          <p>Annrose-debug</p>
-        </a>
-        <a
-          href="https://www.linkedin.com/in/annrose-akande-a2a279349"
-          class="contact-item"
-          target="_blank"
-          rel="noopener"
-        >
-          <div class="contact-icon"><i class="fa-brands fa-linkedin"></i></div>
-          <h3>LinkedIn</h3>
-          <p>annrose-akande</p>
-        </a>
+
+      <div class="grid sm:grid-cols-3 gap-6 mt-10">
+        <div class="card card-hover rounded-2xl p-6 text-center">
+          <i class="fa-solid fa-pen-nib text-pink text-2xl mb-4"></i>
+          <h3 class="font-display font-medium">Writing on Substack</h3>
+          <p class="text-dim text-sm mt-2 leading-relaxed">
+            Essays on personal growth, human behavior, and modern social
+            dynamics — the parts of life that don't compile.
+          </p>
+        </div>
+        <div class="card card-hover rounded-2xl p-6 text-center">
+          <i class="fa-solid fa-music text-pink text-2xl mb-4"></i>
+          <h3 class="font-display font-medium">Ariana Grande, on repeat</h3>
+          <p class="text-dim text-sm mt-2 leading-relaxed">
+            Basically the soundtrack to every coding session and every off-day.
+            Non-negotiable.
+          </p>
+        </div>
+        <div class="card card-hover rounded-2xl p-6 text-center">
+          <i class="fa-solid fa-mug-hot text-pink text-2xl mb-4"></i>
+          <h3 class="font-display font-medium">Coffee &amp; Coding</h3>
+          <p class="text-dim text-sm mt-2 leading-relaxed">
+            A good cup and a quiet block of time is really all I need to get
+            lost in a build.
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-      <p class="footer-logo">A<span>·</span>A</p>
-      <p class="footer-copy">
-        &copy; <span id="currentYear"></span> Annrose Akande. All rights
-        reserved.
-      </p>
+    <!-- ============================================================
+     CONTACT
+============================================================ -->
+    <section
+      id="contact"
+      class="relative z-10 max-w-4xl mx-auto px-6 py-24 reveal"
+    >
+      <div class="card glow-ring rounded-3xl p-8 sm:p-12 text-center">
+        <p class="font-hand text-pink text-2xl">let's talk ✿</p>
+        <h2 class="font-display text-2xl sm:text-3xl font-semibold mt-2">
+          Open to opportunities &amp; collaborations.
+        </h2>
+        <p class="text-dim mt-3 max-w-lg mx-auto">
+          Reach out anytime for software development, technical support, or data
+          analyst roles.
+        </p>
+
+        <div class="grid sm:grid-cols-3 gap-4 mt-8">
+          <a
+            href="mailto:annrose.akande@outlook.com"
+            class="card card-hover rounded-2xl p-5"
+          >
+            <i class="fa-solid fa-envelope text-pink mb-2"></i>
+            <p class="font-display text-xs text-dim mt-1">
+              annrose.akande<br />@outlook.com
+            </p>
+          </a>
+          <a
+            href="https://github.com/Annrose-debug"
+            target="_blank"
+            rel="noopener"
+            class="card card-hover rounded-2xl p-5"
+          >
+            <i class="fa-brands fa-github text-pink mb-2"></i>
+            <p class="font-display text-xs text-dim mt-1">Annrose-debug</p>
+          </a>
+          <a
+            href="https://www.linkedin.com/in/annrose-akande"
+            target="_blank"
+            rel="noopener"
+            class="card card-hover rounded-2xl p-5"
+          >
+            <i class="fa-brands fa-linkedin text-pink mb-2"></i>
+            <p class="font-display text-xs text-dim mt-1">annrose-akande</p>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="relative z-10 border-t border-border py-8 px-6">
+      <div
+        class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 font-display text-xs text-dim"
+      >
+        <p>
+          Annrose ✿ &nbsp;© <span id="year"></span> Annrose Akande. Made with
+          lots of ♡ and coffee.
+        </p>
+      </div>
     </footer>
 
     <script src="script.js"></script>
